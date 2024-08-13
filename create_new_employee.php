@@ -1,5 +1,4 @@
 <?php
-
 //connect to database
 $servername = "localhost";
 $username = "root";
@@ -14,8 +13,6 @@ if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
 
-
-
 $name = "";
 $email = "";
 $phone = "";
@@ -25,13 +22,11 @@ $errorMessage = "";
 $successMessage = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     //echo "DDD";
     $name = $_POST["name"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $address = $_POST["address"];
-
 
     do {
         # code...
@@ -40,9 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
             //echo $errorMessage;
         }
-
         //add new employee into database
-
         $sql = "INSERT INTO employee (name, email, phone, address) VALUES ('$name', '$email', '$phone', '$address')";
         $result = $connection->query($sql);
 
@@ -57,36 +50,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $address = "";
 
         $successMessage = "";
-
         $successMessage = "Employee Added Successfully!";
-
         header("location: ./index.php");
         exit;
 
-
     } while (false);
-
-
 } else {
     //echo "ELse";
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Employee Management CRUD | New Employee</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
-">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
 
     <style>
         /* for showing validation msg red */
@@ -133,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <!-- navbar start -->
-    <nav class="navbar navbar-expand-lg navbar-dark mycolor">
+    <nav class="navbar navbar-expand-lg navbar-dark mycolor p-2">
         <a class="navbar-brand" href="index.php">Employee Management</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,23 +124,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><a class="nav-link" href="index.php">Home
                     </a></li>
-                <li class="nav-item active"><a class="nav-link" href="./create_new_employee.php">Add
-                        Employee</a></li>
-              
-               
+                <li class="nav-item active"><a class="nav-link" href="./create_new_employee.php">Add Employee</a></li>  
             </ul>
-
         </div>
     </nav>
 
     <!-- navbar End -->
-
-
-
     <div class="container my-5">
         <h2 class="text-center mb-5">New Employee</h2>
         <!-- employee form -->
-
 
         <?php
         if (!empty($errorMessage)) {
@@ -200,40 +173,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             </div>
 
-
             <?php
             if (!empty($successMessage)) {
-                echo "
-                
+                echo " 
                 <div class='offset-sm-3 col-sm-6'>
                     <div class='alert alert-success alert-dismissible fade show' role='alert'>
                         <strong>$successMessage</strong>
                         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                     </div>
                 </div>
-                
-                
                 ";
             }
             ?>
-
-            <div class="row mb-3">
-
-                <div class="offset-sm-3 col-sm-3 d-grid">
+       <div class="row mb-3">
+            <div class="offset-sm-3 col-sm-3 d-grid">
                     <button type="submit" class="btn btn-outline-primary">Submit</button>
-                </div>
-                <div class="col-sm-3 d-grid">
-                    <a href="./index.php" class="btn btn-outline-primary" role="button">Cancel</a>
-                </div>
             </div>
-
-
-        </form>
+            <div class="col-sm-3 d-grid">
+                    <a href="./index.php" class="btn btn-outline-primary" role="button">Cancel</a>
+            </div>
+        </div>
+    </form>
     </div>
-
-
-
-
 </body>
-
 </html>

@@ -4,12 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Management CRUD | PHP CRUD</title>
+    <title>Employee Management CRUD</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
-">
-
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
     <style>
         /* for showing validation msg red */
@@ -53,37 +50,25 @@
 
         }
     </style>
-
 </head>
-
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark mycolor p-2">
-        <a class="navbar-brand" href="index.php">Employee Management</a>
+        <a class="navbar-brand fs-5" href="index.php"> Employee Management </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" href="index.php">Home
-
-                    </a></li>
-                <li class="nav-item active"><a class="nav-link" href="./create_new_employee.php">Add
-                        Employee</a></li>
-               
+            <ul class="navbar-nav mr-auto flex justify-content-center">
+                <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+                <li class="nav-item active "><a class="nav-link" href="./create_new_employee.php">Add Employee</a></li>
             </ul>
-
         </div>
     </nav>
-
     <div class="container my-5">
         <h2 class="text-center">List of Employees</h2>
         <a href="./create_new_employee.php" role="button" class="btn btn-primary">New Employee</a>
         <br>
-
-
         <table class="table">
             <thead>
                 <tr>
@@ -102,10 +87,11 @@
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
-                $database = "php_employee_management";
+                $database ="php_employee_management";
 
                 //Create Connection
-                $connection = new mysqli($servername, $username, $password, $database);
+                $connection = new mysqli($servername, $username, $password,$database);
+
 
                 //Check connection stablished or not!
                 if ($connection->connect_error) {
@@ -116,8 +102,6 @@
                     $sql = "SELECT * from employee";
                     $result = $connection->query($sql);
                 }
-
-
 
                 if (!$result) {
                     die("Invalid query : " . $connection->error);
@@ -142,17 +126,10 @@
                     ";
                     }
                 }
-
-
-
-
-
                 ?>
-
             </tbody>
         </table>
     </div>
 </body>
 <!-- test change -->
-
 </html>
